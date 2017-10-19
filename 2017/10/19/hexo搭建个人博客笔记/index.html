@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="欢迎来到我的Blog">
 <meta property="og:description" content="之前一直都很羡慕别人有自己的博客，这几天空闲下来。想搭建一个属于自己的博客。在查阅资料后发现hexo + github就可以搭建,在此记录一下搭建博客过程中遇到的一些问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T04:59:39.507Z">
+<meta property="og:updated_time" content="2017-10-19T05:22:01.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo搭建个人博客笔记">
 <meta name="twitter:description" content="之前一直都很羡慕别人有自己的博客，这几天空闲下来。想搭建一个属于自己的博客。在查阅资料后发现hexo + github就可以搭建,在此记录一下搭建博客过程中遇到的一些问题">
@@ -214,6 +214,8 @@
 </li>
 </ol>
 <h3 id="6-添加顶部加载条"><a href="#6-添加顶部加载条" class="headerlink" title="6 添加顶部加载条"></a>6 添加顶部加载条</h3><p>打开/themes/next/layout/_partials/head.ejs文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;//cdn.bootcss.com/pace/1.0.2/pace.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;link href=&quot;//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css&quot; rel=&quot;stylesheet&quot;&gt;   //pink可以自行改成自己喜欢的颜色</div></pre></td></tr></table></figure></p>
+<h3 id="7-添加404公益页面"><a href="#7-添加404公益页面" class="headerlink" title="7 添加404公益页面"></a>7 添加404公益页面</h3><p>新建404.html页面放到source目录下面。（注意，不要放到source下的post里面）<br>放在source下的文件会被上传但不会被解析到文章里面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;404&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	自定义</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>或者 加入腾讯公益<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;404&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js&quot; charset=&quot;utf-8&quot; homePageUrl=&quot;http://yoursite.com/yourPage.html&quot; homePageName=&quot;回到我的主页&quot;&gt;&lt;/script&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 
       
 
