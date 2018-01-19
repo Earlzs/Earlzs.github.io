@@ -19,7 +19,8 @@
 <meta property="og:description" content="公司最近要用react-native开发App,我负责android端的开发,在本地大概做了一些后,需要打包个apk看一下,查看了官网教程看不太懂.结合搜集来的一些资料终于打包成功,在此记录一下">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/10/27/react-native%20Android开发记录/1.png">
-<meta property="og:updated_time" content="2017-12-12T04:13:29.415Z">
+<meta property="og:image" content="http://yoursite.com/2017/10/27/react-native%20Android开发记录/2.jpg">
+<meta property="og:updated_time" content="2018-01-18T03:48:13.633Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native Android开发记录">
 <meta name="twitter:description" content="公司最近要用react-native开发App,我负责android端的开发,在本地大概做了一些后,需要打包个apk看一下,查看了官网教程看不太懂.结合搜集来的一些资料终于打包成功,在此记录一下">
@@ -188,6 +189,11 @@
 <h3 id="3-控制app只能横竖屏"><a href="#3-控制app只能横竖屏" class="headerlink" title="3,控制app只能横竖屏"></a>3,控制app只能横竖屏</h3><p>打开  AndroidManifest.xml 文件在<br>activity下添加   android:screenOrientation=”landscape”属性即可(landscape是横向，portrait是纵向)。</p>
 <h3 id="4-Android下Box-shadow"><a href="#4-Android下Box-shadow" class="headerlink" title="4,Android下Box-shadow"></a>4,Android下Box-shadow</h3><p>在官方文档里,box-shadow只支持ios,<br>目前找到一种方法实现可以给盒子添加  <code>elevation: 10</code>  不过不可以改颜色,默认是灰色的阴影</p>
 <h3 id="5-让安卓实现push动画"><a href="#5-让安卓实现push动画" class="headerlink" title="5,让安卓实现push动画"></a>5,让安卓实现push动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import CardStackStyleInterpolator from &apos;react-navigation/src/views/CardStackStyleInterpolator&apos;;</div><div class="line"></div><div class="line">// 在StackNavigator配置headerMode的地方，使用transitionConfig添加</div><div class="line">&#123;</div><div class="line">    headerMode: &apos;screen&apos;,</div><div class="line">    transitionConfig:()=&gt;(&#123;</div><div class="line">        screenInterpolator:CardStackStyleInterpolator.forHorizontal,</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="6-实现Android返回键点击两次退出应用"><a href="#6-实现Android返回键点击两次退出应用" class="headerlink" title="6,实现Android返回键点击两次退出应用"></a>6,实现Android返回键点击两次退出应用</h3><p>这是一开始的思路<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">import  BackHandler from &apos;react-native&apos;</div><div class="line"></div><div class="line">componentWillMount()&#123;  </div><div class="line">    BackHandler.addEventListener(&apos;hardwareBackPress&apos;, this._onBackAndroid );  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">componentUnWillMount()&#123;  </div><div class="line">    BackHandler.addEventListener(&apos;hardwareBackPress&apos;, this._onBackAndroid);  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">_onBackAndroid=()=&gt;&#123;  </div><div class="line">    let now = new Date().getTime();  </div><div class="line">    if(now - lastBackPressed &lt; 2500) &#123;  </div><div class="line">        return false;  </div><div class="line">    &#125;  </div><div class="line">    lastBackPressed = now;  </div><div class="line">    ToastAndroid.show(&apos;再点击一次退出应用&apos;,ToastAndroid.SHORT);  </div><div class="line">    return true;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是这段代码不管是在哪个界面都会显示提示’再点击一次退出应用’,而我们想要的效果是如果界面不是根界面，点击返回按钮，返回上一页；如果是根界面，点击提示“再点击一次退出应用”，再次点击退出应用。<br>那怎么判断它是不是根界面呢？又在哪里判断呢？</p>
+<p>react-navigation中有一个onNavigationStateChange方法，可以得到导航状态的改变，打印log如下：<br><img src="/2017/10/27/react-native Android开发记录/2.jpg" alt=""></p>
+<p>其中：prevNav是之前导航状态，nav是当前导航状态，action是当前进行的操作。所以我们可以通过当前导航的状态中的routes的length属性来判断当前界面是否为根界面，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">let routes = [];</div><div class="line">let lastBackPressed = null;</div><div class="line"></div><div class="line"></div><div class="line">    componentDidMount() &#123;</div><div class="line">        BackHandler.addEventListener(&apos;hardwareBackPress&apos;, this.onBackAndroid);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    componentWillUnmount() &#123;</div><div class="line">        BackHandler.removeEventListener(&apos;hardwareBackPress&apos;, this.onBackAndroid);</div><div class="line">        lastBackPressed = null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    onBackAndroid() &#123;</div><div class="line">        if (routes.length === 1) &#123; // 只需要判断length是否为1就能确定是否在根界面</div><div class="line">            if (lastBackPressed &amp;&amp; lastBackPressed + 2000 &gt;= Date.now()) &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">            lastBackPressed = Date.now();</div><div class="line">            Toast.showShortCenter(&apos;再点击一次退出应用&apos;);</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    render() &#123;</div><div class="line">        return (</div><div class="line">            &lt;AppNavigator</div><div class="line">                onNavigationStateChange=&#123;(prevNav, nav, action) =&gt; &#123;</div><div class="line">                console.log(&apos;prevNav=&apos;,prevNav);</div><div class="line">                console.log(&apos;nav=&apos;,nav);</div><div class="line">                console.log(&apos;action=&apos;,action);</div><div class="line">                routes = nav.routes;</div><div class="line">            &#125;&#125;/&gt;</div><div class="line">        );</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+
       
 
       
@@ -329,7 +335,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-修改app名称-android"><span class="toc-number">1.</span> <span class="toc-text">1,修改app名称(android)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-修改app图标-android"><span class="toc-number">2.</span> <span class="toc-text">2,修改app图标(android)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-控制app只能横竖屏"><span class="toc-number">3.</span> <span class="toc-text">3,控制app只能横竖屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Android下Box-shadow"><span class="toc-number">4.</span> <span class="toc-text">4,Android下Box-shadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-让安卓实现push动画"><span class="toc-number">5.</span> <span class="toc-text">5,让安卓实现push动画</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-修改app名称-android"><span class="toc-number">1.</span> <span class="toc-text">1,修改app名称(android)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-修改app图标-android"><span class="toc-number">2.</span> <span class="toc-text">2,修改app图标(android)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-控制app只能横竖屏"><span class="toc-number">3.</span> <span class="toc-text">3,控制app只能横竖屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Android下Box-shadow"><span class="toc-number">4.</span> <span class="toc-text">4,Android下Box-shadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-让安卓实现push动画"><span class="toc-number">5.</span> <span class="toc-text">5,让安卓实现push动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-实现Android返回键点击两次退出应用"><span class="toc-number">6.</span> <span class="toc-text">6,实现Android返回键点击两次退出应用</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -365,7 +371,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 宾克斯的美酒
+    		&copy; 2018 宾克斯的美酒
 			</div>
 			
 			<div class="powered-by">
@@ -456,10 +462,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
@@ -469,6 +471,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
               </li>
             
             <div class="clearfix"></div>
