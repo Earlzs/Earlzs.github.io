@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 欢迎来到我的Blog</title>
+  <title>VSCode下使用ESLint代码风格检验 | 欢迎来到我的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
   <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.css" rel="stylesheet">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="欢迎来到我的Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="团队协作开发中，为了统一代码风格，避免一些低级错误，应该设有团队成员统一遵守的编码规范。很多语言都提供了Lint工具来实现这样的功能，JavaScript也有类似的工具：ESLint。除了可以集成到构建工具中(如：Gulp)在构建过程中检查代码风格以外；还可以通过将ESLint和代码编辑器相结合以提供代码风格的实时校验。这里将介绍如何在Visual Studio Code使用ESLint来提供代码">
+<meta name="keywords" content="VSCode   ESLint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode下使用ESLint代码风格检验">
+<meta property="og:url" content="http://yoursite.com/2018/02/06/VSCode下使用ESLint代码风格检验/index.html">
 <meta property="og:site_name" content="欢迎来到我的Blog">
+<meta property="og:description" content="团队协作开发中，为了统一代码风格，避免一些低级错误，应该设有团队成员统一遵守的编码规范。很多语言都提供了Lint工具来实现这样的功能，JavaScript也有类似的工具：ESLint。除了可以集成到构建工具中(如：Gulp)在构建过程中检查代码风格以外；还可以通过将ESLint和代码编辑器相结合以提供代码风格的实时校验。这里将介绍如何在Visual Studio Code使用ESLint来提供代码">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-06T06:37:35.095Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="欢迎来到我的Blog">
+<meta name="twitter:title" content="VSCode下使用ESLint代码风格检验">
+<meta name="twitter:description" content="团队协作开发中，为了统一代码风格，避免一些低级错误，应该设有团队成员统一遵守的编码规范。很多语言都提供了Lint工具来实现这样的功能，JavaScript也有类似的工具：ESLint。除了可以集成到构建工具中(如：Gulp)在构建过程中检查代码风格以外；还可以通过将ESLint和代码编辑器相结合以提供代码风格的实时校验。这里将介绍如何在Visual Studio Code使用ESLint来提供代码">
   
   
     <link rel="icon" href="/favicon.png">
@@ -150,36 +155,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-VSCode下使用ESLint代码风格检验" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/06/VSCode下使用ESLint代码风格检验/" class="archive-article-date">
-  	<time datetime="2018-02-06T06:35:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/06/VSCode下使用ESLint代码风格检验/">VSCode下使用ESLint代码风格检验</a>
+    <h1 class="article-title" itemprop="name">
+      VSCode下使用ESLint代码风格检验
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/02/06/VSCode下使用ESLint代码风格检验/" class="archive-article-date">
+  	<time datetime="2018-02-06T06:35:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>团队协作开发中，为了统一代码风格，避免一些低级错误，应该设有团队成员统一遵守的编码规范。很多语言都提供了Lint工具来实现这样的功能，JavaScript也有类似的工具：ESLint。除了可以集成到构建工具中(如：Gulp)在构建过程中检查代码风格以外；还可以通过将ESLint和代码编辑器相结合以提供代码风格的实时校验。这里将介绍如何在Visual Studio Code使用ESLint来提供代码风格的实时校验。</p>
+<a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>在VsCode的扩展中,搜索ESLint安装完成后重启</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,46 +218,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/02/06/VSCode下使用ESLint代码风格检验/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-react-native">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/19/react-native CodePush/" class="archive-article-date">
-  	<time datetime="2018-01-19T03:10:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/19/react-native CodePush/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CodePush</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/19/react-native CodePush/">CodePush</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -268,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

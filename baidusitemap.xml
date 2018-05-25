@@ -4,8 +4,40 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/12/12/React-native%E4%B8%AD%E4%BD%BF%E7%94%A8redux/</loc>
+    <lastmod>2018-05-25T02:28:25.706Z</lastmod>
+    <data>
+        <display>
+        <title>React-native中使用redux</title>
+        <pubTime>2017-12-12T04:09:13.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/02/06/VSCode%E4%B8%8B%E4%BD%BF%E7%94%A8ESLint%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%A3%80%E9%AA%8C/</loc>
+    <lastmod>2018-02-06T06:37:35.095Z</lastmod>
+    <data>
+        <display>
+        <title>VSCode下使用ESLint代码风格检验</title>
+        <pubTime>2018-02-06T06:35:12.000Z</pubTime>
+        
+        <tag>VSCode   ESLint</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/01/19/react-native%20CodePush/</loc>
-    <lastmod>2018-01-19T08:34:39.435Z</lastmod>
+    <lastmod>2018-01-19T08:34:39.436Z</lastmod>
     <data>
         <display>
         <title>CodePush</title>
@@ -37,7 +69,7 @@
     
   <url>
     <loc>http://yoursite.com/2017/10/20/Css%E9%80%89%E6%8B%A9%E5%99%A8%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2017-12-25T08:18:54.170Z</lastmod>
+    <lastmod>2017-12-25T08:18:54.171Z</lastmod>
     <data>
         <display>
         <title>Css选择器总结</title>
@@ -86,7 +118,7 @@
     
   <url>
     <loc>http://yoursite.com/2017/12/19/js%E7%9A%84%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2017-12-19T09:57:33.679Z</lastmod>
+    <lastmod>2017-12-19T09:57:33.680Z</lastmod>
     <data>
         <display>
         <title>js的数组操作</title>
@@ -115,23 +147,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/12/React-native%E4%B8%AD%E4%BD%BF%E7%94%A8redux/</loc>
-    <lastmod>2017-12-12T04:11:11.134Z</lastmod>
-    <data>
-        <display>
-        <title>React-native中使用redux</title>
-        <pubTime>2017-12-12T04:09:13.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2017/12/12/react-native%20Android%E6%89%93%E5%8C%85%E7%94%9F%E6%88%90Apk/</loc>
-    <lastmod>2017-12-12T04:08:00.611Z</lastmod>
+    <lastmod>2017-12-12T04:08:00.612Z</lastmod>
     <data>
         <display>
         <title>Android打包生成Apk</title>
